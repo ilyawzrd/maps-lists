@@ -85,7 +85,9 @@ need a session started from a terminal with Full Disk Access.
    - Concrete, usable info only: what to order, when to go, book ahead, closing day. No filler
      like "great atmosphere" or "authentic".
    - One or two sentences by default, never more than about six.
-   - No source markers or rank numbers unless the user asked for a ranked list.
+   - No source markers or rank numbers unless the user asked for a ranked list. "Classic." at
+     the start of a note and the sentence "Reddit favourite." (from `maps-lists:research`, or
+     the user's own wording for the same) aren't markers: keep them where they are.
    - Michelin Guide status the file gives for a place (stars, Bib Gourmand, "Michelin
      recommended"/Selected) stays in the note, as its last sentence, in the form
      `maps-lists:research` uses: "Michelin star (2026).", "Two Michelin stars (2026).",

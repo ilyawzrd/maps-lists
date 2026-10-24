@@ -68,8 +68,10 @@ needs judgment about sources.
 ### What the research keeps
 
 The test is quality, not fame. A famous place stays if locals and local press still recommend it on
-its merits; its details start with "Classic." and say what to expect (lines, the one thing to
-order, when to go). It's dropped as a **tourist trap** when its reputation is better than what it
+its merits; its details and its Maps note start with "Classic.", and the details say what to expect
+(lines, the one thing to order, when to go). A place locals clearly rate on Reddit (the top-scored
+pick in a thread, or recommended in two or more threads, without upvoted pushback) gets "Reddit
+favourite." in its note, before any Michelin status. It's dropped as a **tourist trap** when its reputation is better than what it
 serves (locals say overrated or "went downhill", touts, picture menus), as **viral** when the hype is
 one photogenic item, as **bad** when reviews or locals say the food is poor now, and when it's
 **closed**. Everything else the research found stays, new openings and single-source places

@@ -249,6 +249,11 @@ Every research pass covers these, per category:
      there; pushback on candidates from step 1 ("overrated", "went downhill", "closed"); and the
      thread's date. A detailed comment from a resident with real upvotes counts as one strong local
      source in step 2. A place only Reddit names is kept like any other (step 2).
+   - Mark a place **Reddit favourite** (for its note, step 3) when locals clearly rate it: the
+     top-scored recommendation in a thread about the city and category, or recommended in at
+     least two separate threads, with no upvoted pushback ("overrated", "went downhill") that
+     outweighs it. One passing mention, or praise only from visitors, isn't enough. Without
+     step 1c (snippets only), the bar is a positive mention in at least three different threads.
    - Each thread you rely on goes into `sources` as
      `{title: "r/<sub>: <thread title>", url: "https://www.reddit.com/r/<sub>/comments/<id>/"}`.
    - If a command prints `"ok": false` (an expired login, `forbidden`, rate limited), stop
@@ -263,8 +268,8 @@ Every research pass covers these, per category:
    - **Classic** → keep: famous, and locals or local press still recommend it on its merits now
      ("still the best morning bun", "worth the line on a weekday"). Start its `details` with
      `Classic.` (translated: `Классика.`, `Clàssic.`) and say frankly what to expect (lines, prices, the one
-     thing worth ordering, when to go). Its `note` carries the practical part ("Go before 9 or
-     on a weekday"). With `--more-gems`, keep at most about 3 classics per category and put the
+     thing worth ordering, when to go). Its `note` starts with `Classic.` too, then the practical
+     part ("Classic. Go before 9 or on a weekday."). With `--more-gems`, keep at most about 3 classics per category and put the
      rest in `excluded[]` with reason `classic: <why it's famous>`; with `--gems`, put all of
      them there. Either way the user can tick them back in.
    - **Viral / TikTok** → drop: described mainly as "TikTok famous", "viral", "Instagrammable";
@@ -319,17 +324,26 @@ Every research pass covers these, per category:
        when no source singles out one branch.
      - `note`: the text that goes to Maps. Use the **note style** of `maps-lists:import`: plain
        text, no name, city or address, only concrete info (what to order, when to go, book ahead,
-       closing day), one or two sentences, no sources or ranks. One exception: when a source from
-       this run puts the place in the Michelin Guide, the note **must end** with that fact as its
-       last sentence, in exactly one of these forms (translated like the rest):
-       "Michelin star (2026).", "Two Michelin stars (2026).", "Three Michelin stars (2026).",
-       "Michelin Bib Gourmand (2026).", "In the Michelin Guide (2026)." (Selected). The year is the
-       guide year from the source; leave it out only when the "Michelin check" in step 2 found
-       none. It goes in the note itself, not only in `details`: not at the start, not "Bib-rated"
-       or "Michelin-listed". It's a fact about the place, not a source marker or a rank. Never
-       add it from memory. Put the Michelin link in `sources`. Before writing the file, check
-       every place whose `details` or `sources` mention Michelin: its note must end with the
-       fact.
+       closing day), one or two sentences, no sources or ranks. Three fixed sentences are the
+       exception, facts about the place rather than source markers, each in the note itself, not
+       only in `details`, translated like the rest:
+       - **Classic** (step 2): the note **starts** with "Classic." (`Классика.`).
+       - **Reddit favourite** (step 1c's bar): the sentence "Reddit favourite." (`Фаворит
+         Reddit.`) comes right after the practical part, before any Michelin sentence. Its thread
+         goes in `sources`.
+       - **Michelin:** when a source from this run puts the place in the Michelin Guide, the
+         note **must end** with that fact as its last sentence, in exactly one of these forms:
+         "Michelin star (2026).", "Two Michelin stars (2026).", "Three Michelin stars (2026).",
+         "Michelin Bib Gourmand (2026).", "In the Michelin Guide (2026)." (Selected). The year
+         is the guide year from the source; leave it out only when the "Michelin check" in
+         step 2 found none. Not at the start, not "Bib-rated" or "Michelin-listed". Never add it
+         from memory. Put the Michelin link in `sources`.
+
+       All three together: "Classic. Aligot-saucisse from the copper pot; book ahead. Reddit
+       favourite. Michelin Bib Gourmand (2026)." Before writing the file, check every place:
+       `details` starting with `Classic.` → the note starts with it; marked Reddit favourite →
+       the note has that sentence; `details` or `sources` mentioning Michelin → the note ends
+       with the fact.
      - `details`: what the user reads on the review page. Why it's in, who recommends it, what to
        order, caveats (lines, prices, laptop rules, hours). Two to four sentences of plain text;
        `[text](url)` links are fine. Blank lines separate paragraphs.
