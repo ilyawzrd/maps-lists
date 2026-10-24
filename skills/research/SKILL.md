@@ -78,7 +78,7 @@ messages and questions, and in the research JSON `"lang": "<tag>"` plus `section
 Russian version as a worked example; in any other language, translate them yourself. These stay as
 they are, because code and the next skill read them:
 `area: "all branches"` (the review page shows it as «все филиалы»), the reason prefixes `trap:`,
-`viral:`, `closed:`, `bad:`, `unconfirmed:`, `classic:`, place names as the sources write them, and the file slug
+`viral:`, `closed:`, `bad:`, `thin evidence:`, `unconfirmed:`, `classic:`, place names as the sources write them, and the file slug
 (ASCII, transliterated: `research/moskva-pekarni-20261019.json`). Brief `deep-research` in English
 or the user's language, but ask for the report's notes and details in the user's language. Pass
 `--lang <tag>` to `maps-lists:import` for anything but English. The language is the user's, not the
@@ -118,8 +118,7 @@ Every research pass covers these, per category:
   through the public web preview `https://t.me/s/<channel>` with `WebFetch` (no login). If a
   preview won't load, work from the snippets and don't retry it. A local author with a track
   record counts like local press; a channel that's mostly paid posts («реклама», `#ad`, promo
-  codes, "partner") carries little weight as praise (it still puts the place on the list, see
-  step 2). Telegram weighs most where it's the main local food
+  codes, "partner") doesn't count as a source in step 2. Telegram weighs most where it's the main local food
   medium (Russian-speaking cities and the rest of the CIS, Israel, Iran…) and least where Reddit
   and local press are rich.
 - **Russian-speaking cities** (Russia, Belarus, Kazakhstan, Kyrgyzstan, Georgia and Armenia for
@@ -202,8 +201,8 @@ Every research pass covers these, per category:
    - Not to leave a place out for being famous or busy: report every well-known candidate with
      the evidence for and against, and let step 2 decide.
    - Not to hold anything back: report every place found, including new openings and places
-     with a single source, with what is known about each. No "watch list", "too new to judge" or
-     "not enough evidence" bucket that stays out of the report.
+     with a single source, each with its sources listed, so step 2 can weigh them. No "watch
+     list" or "too new to judge" bucket that stays out of the report.
    - With `--more-gems` or `--gems`: spend most of the effort on lesser-known places: searches
      for "underrated", "hidden gem", "locals only", "new opening", the local-language
      equivalents, and neighbourhoods away from the centre; Telegram and local bloggers over
@@ -248,7 +247,7 @@ Every research pass covers these, per category:
    - Take from them: places named, with each comment's score and whether the writer says they live
      there; pushback on candidates from step 1 ("overrated", "went downhill", "closed"); and the
      thread's date. A detailed comment from a resident with real upvotes counts as one strong local
-     source in step 2. A place only Reddit names is kept like any other (step 2).
+     source in step 2. A place only Reddit names needs such a comment; a passing mention isn't enough.
    - Mark a place **Reddit favourite** (for its note, step 3) when locals clearly rate it: the
      top-scored recommendation in a thread about the city and category, or recommended in at
      least two separate threads, with no upvoted pushback ("overrated", "went downhill") that
@@ -278,15 +277,22 @@ Every research pass covers these, per category:
    - **Closed** (permanently or "closed since…") → drop.
    - **Bad** → drop: poor reviews, or locals and local press say the food or service is bad now.
      Reason `bad: <what's wrong>`.
-   - **Keep everything else.** If the research found a place, that's reason enough to list it:
-     a new opening, a single source, a listicle mention or few reviews is never a reason to drop
-     it. Put it in `places[]` with a proper `note`, and say the caveat in `details` ("Opened in
-     2026, few reviews yet", "Only one source: <who>"). Weak or paid praise lowers what you say
-     about a place, not whether it's on the list.
+   - **Keep** places with at least two independent sources, or one strong local one (a resident
+     on Reddit with a detailed, upvoted comment, a local food critic's review, a local Telegram
+     author who isn't paid for the post). One listicle, roundup or blog post alone is not enough,
+     and neither is a contest or award ranking (a baguette or croissant contest, a "best of"
+     list): it counts as one source, not a reason on its own. Several pages from the same outlet
+     count once.
+   - **New openings** follow the same bar: being new or having few reviews is never a reason to
+     drop a place that meets it. Say the caveat in `details` ("Opened in 2026, few reviews yet").
+   - **Thin evidence** → `excluded[]`, not dropped: everything below the bar, with reason
+     `thin evidence: only <source>`. The user sees it under "Left out" and can tick it back in.
    - **Unconfirmed** → `excluded[]` only when you can't tell whether the place still exists or is
      open (a listing that may be stale, no trace in the current or previous year). Reason
      `unconfirmed: <what's unclear>`.
-   - Expect about 10–25 places per category; more is fine when the research found more.
+   - Aim for about 10–25 places per category. A tight list beats an exhaustive one: when more
+     than about 25 pass the bar, keep the best-supported and move the rest to `excluded[]` as
+     `thin evidence: <why it's weaker>`.
    - **No silent drops.** Every candidate the research surfaced, above all the well-known ones,
      ends up in `places[]` or in `excluded[]` with its reason. Before step 3, check the city's
      famous names for the category against both lists, and add any that's missing.
@@ -309,7 +315,7 @@ Every research pass covers these, per category:
      `filteredNote`, `details` ("Why it's here"), `hide`, `sources`, `placeholder`, `keep`, `noteFor`,
      `undo`, `cancel` ("Stop, don't save"), `discard`, `discardYes`, `discardNo`, `safe`,
      `allBranches`, `untickAll`, `tickAll`, `jumpTo`, `toTop`, `reasonTrap`, `reasonViral`, `reasonClosed`,
-     `reasonBad`, `reasonThin` ("Can't confirm it's open"), `reasonClassic`, `nothing`, `reconnecting`, `sending`, `sent`, `sentNext`,
+     `reasonBad`, `reasonThin` ("Thin evidence"), `reasonUnconfirmed` ("Can't confirm it's open"), `reasonClassic`, `nothing`, `reconnecting`, `sending`, `sent`, `sentNext`,
      `cancelled`, `close`; the counts `picks`, `leftOut`, `sumKept`, `sumOff`, `sumEdited` as
      "Label: {n}" and `of` as "{a} of {b}" (no plural forms needed); and `go`: the Continue
      button per plural category of the language, with `{n}` for the count, e.g.
@@ -324,7 +330,9 @@ Every research pass covers these, per category:
        when no source singles out one branch.
      - `note`: the text that goes to Maps. Use the **note style** of `maps-lists:import`: plain
        text, no name, city or address, only concrete info (what to order, when to go, book ahead,
-       closing day), one or two sentences, no sources or ranks. Three fixed sentences are the
+       closing day), one or two sentences, no sources or ranks. A contest placing isn't a note
+       ("Baguette de tradition, 7th best in Paris 2026"): say what to get. Only a current-year
+       win or top 3 may be mentioned, after the practical part. Three fixed sentences are the
        exception, facts about the place rather than source markers, each in the note itself, not
        only in `details`, translated like the rest:
        - **Classic** (step 2): the note **starts** with "Classic." (`Классика.`).
@@ -350,7 +358,7 @@ Every research pass covers these, per category:
      - `sources`: `[{title, url}]`, the links behind the pick.
    - `excluded[]`: what step 2 dropped, one entry per place (never several names in one), each
      with the same fields plus `reason`
-     (`trap: …`, `viral: …`, `bad: …`, `closed: …`, `unconfirmed: …`, or `classic: …` with `--gems`, one
+     (`trap: …`, `viral: …`, `bad: …`, `closed: …`, `thin evidence: …`, `unconfirmed: …`, or `classic: …` with `--gems`, one
      line). Leave `note` empty.
    - Say once, in a `details` or a `reason`, when Reddit or Telegram evidence comes only from
      search snippets (for Reddit: whenever step 1c didn't run).

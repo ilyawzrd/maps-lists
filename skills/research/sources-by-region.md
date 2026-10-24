@@ -12,7 +12,7 @@ A region not listed here uses the general sources only.
   Japanese («<area> <category> 食べログ», «百名店 <genre>»).
 - **South Korea:** Naver Map reviews and Naver blogs (fetch `m.blog.naver.com/...` when the
   desktop page won't load), Kakao Map ratings, Blue Ribbon Survey (블루리본 서베이). Naver blogs are
-  full of sponsored posts: 협찬, 체험단, 원고료, «제공받아» mean paid and carry little weight as praise.
+  full of sponsored posts: 협찬, 체험단, 원고료, «제공받아» mean paid and don't count as a source.
   Google has few Korean reviews. Search in Korean.
 - **Mainland China:** Dianping (大众点评) and its 必吃榜 list, Meituan's Black Pearl (黑珍珠) guide,
   Xiaohongshu (小红书) notes. All sit behind a login: snippets only, no `WebFetch`. Google Maps

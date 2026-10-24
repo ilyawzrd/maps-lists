@@ -1,6 +1,6 @@
 {
   "name": "maps-lists",
-  "version": "0.3.34",
+  "version": "0.3.35",
   "description": "Builds Google Maps saved lists, with notes, from city research or a .md file of places. Unofficial; drives your own Chrome.",
   "author": {
     "name": "Ilia Litvinenko"

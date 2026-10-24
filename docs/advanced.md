@@ -74,8 +74,10 @@ pick in a thread, or recommended in two or more threads, without upvoted pushbac
 favourite." in its note, before any Michelin status. It's dropped as a **tourist trap** when its reputation is better than what it
 serves (locals say overrated or "went downhill", touts, picture menus), as **viral** when the hype is
 one photogenic item, as **bad** when reviews or locals say the food is poor now, and when it's
-**closed**. Everything else the research found stays, new openings and single-source places
-included, with the caveat in its details. "Hidden gems" without "only" or "also" gets one extra question: mix in the classics, or
+**closed**. Places need two independent sources or one strong local one; a contest ranking or a
+single listicle counts as one source. New openings follow the same bar, with the caveat in their
+details. Places below it are filtered out as **thin evidence**, and each category aims for about
+10–25 places. "Hidden gems" without "only" or "also" gets one extra question: mix in the classics, or
 only lesser-known places. Every candidate ends up either kept or in the filtered-out section with its reason, so
 you can tick any of them back in on the review page.
 
@@ -140,7 +142,7 @@ notes, and the names and addresses in the summary. `--lang <tag>` forces it (`es
 The review page has built-in labels in English and Russian; for any other language Claude writes
 translated labels into the research file (`ui`), and anything missing shows in English. Machine
 tokens in the research file stay English (`area: "all branches"`, and the
-`trap:`/`viral:`/`bad:`/`closed:`/`unconfirmed:`/`classic:` reason prefixes).
+`trap:`/`viral:`/`bad:`/`closed:`/`thin evidence:`/`unconfirmed:`/`classic:` reason prefixes).
 
 This is only the conversation language. The Maps UI language is a separate thing, detected from your
 Google account: the executor knows Maps' buttons in English, Spanish and Russian, and opens Maps in
