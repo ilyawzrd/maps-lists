@@ -86,6 +86,12 @@ need a session started from a terminal with Full Disk Access.
      like "great atmosphere" or "authentic".
    - One or two sentences by default, never more than about six.
    - No source markers or rank numbers unless the user asked for a ranked list.
+   - Michelin Guide status the file gives for a place (stars, Bib Gourmand, "Michelin
+     recommended"/Selected) stays in the note, as its last sentence, in the form
+     `maps-lists:research` uses: "Michelin star (2026).", "Two Michelin stars (2026).",
+     "Three Michelin stars (2026).", "Michelin Bib Gourmand (2026).", "In the Michelin Guide (2026)."
+     Translated with the note. The year only when the file gives one; never look it up or add it
+     from memory.
    **A `*.places.md` from `maps-lists:research`** is already in this shape: `# ` is the list name,
    `## ` sections are categories, and each bullet is `**Name** (area): note`. Use its notes as
    written, put the `(area)` into the resolve query, and treat `(all branches)` as a chain

@@ -92,9 +92,13 @@ Every research pass covers these, per category:
 - **Local press and guides:** city food publications, local food bloggers, Eater /
   The Infatuation / Time Out where they exist, Michelin Bib Gourmand. Local-language sources
   count (search in the local language too).
-- **Michelin Guide status:** for each pick, whether the Michelin Guide lists it: stars (1 to 3),
-  Bib Gourmand, or Selected, and the year. Read it from guide.michelin.com or a current-year
-  article that cites it, not from memory (stars change every year). Not found → say nothing.
+- **Michelin Guide status:** for each pick that serves food (restaurants, bistros, street food
+  and hawker stalls; not coffee or bakeries unless a source mentions Michelin), whether the
+  Michelin Guide lists it: stars (1 to 3), Bib Gourmand, or Selected, and the **guide year**
+  (the edition, e.g. 2026). Read it from search snippets of guide.michelin.com
+  (`site:guide.michelin.com <name> <city>`; the site itself can't be fetched, it answers bots with
+  an empty page) or from an article on that year's awards, never from memory (stars change every
+  year). Not found → say nothing.
 - **Reddit:** local subreddit first (r/lisbon, r/portugal), then r/travel, r/solotravel,
   r/<country>travel. Vary angles: "locals", "hidden gem", "avoid", "overrated", "tourist trap",
   "went downhill", this year. Upvotes, "I live here" and specificity (dish, street, price) raise a
@@ -209,8 +213,9 @@ Every research pass covers these, per category:
      down, why it's recommended, what to order or when to go, caveats and source links. Also a
      separate list of places to skip, with reasons (trap, viral, bad, closed), the famous names with
      their current local verdict, and a sources list. For each recommended place also its Michelin
-     Guide status (stars, Bib Gourmand or Selected, with the year and the guide.michelin.com or
-     article link), or "none found".
+     Guide status as its own line (stars, Bib Gourmand or Selected, with the guide year and the
+     guide.michelin.com or article link), or "none found". "Michelin-listed" without the
+     distinction and year isn't a status.
    - The criteria from step 2 below, so its report already flags what step 2 will drop.
 
    Tell it to write the report to `~/.maps-lists/reports/<title>.md` and its notes to
@@ -280,6 +285,12 @@ Every research pass covers these, per category:
    - **No silent drops.** Every candidate the research surfaced, above all the well-known ones,
      ends up in `places[]` or in `excluded[]` with its reason. Before step 3, check the city's
      famous names for the category against both lists, and add any that's missing.
+   - **Michelin check.** For the food categories, find the city's current Michelin selection
+     once (one or two searches: `Michelin Guide <city> <year> Bib Gourmand`, `… stars`) and
+     match it against `places[]`. Any place the research calls Michelin-listed, starred or Bib
+     without a distinction or a year gets one search of its own
+     (`site:guide.michelin.com <name> <city>`) to find both. Still no year → the note gets the
+     fact without it ("Michelin Bib Gourmand."); still no distinction → "In the Michelin Guide."
 3. **Write the research file** `research/<slug>-<YYYYMMDD>.json` in the data folder, with the slug from
    city + category, e.g. `research/lisbon-bakeries-20261018.json` (always ASCII). If that name
    is taken (the same research earlier the same day), use `-2`, then `-3`…
@@ -309,12 +320,16 @@ Every research pass covers these, per category:
      - `note`: the text that goes to Maps. Use the **note style** of `maps-lists:import`: plain
        text, no name, city or address, only concrete info (what to order, when to go, book ahead,
        closing day), one or two sentences, no sources or ranks. One exception: when a source from
-       this run puts the place in the Michelin Guide, end the note with that fact in plain words,
-       translated like the rest: "Michelin star (2025).", "Two Michelin stars (2025).",
-       "Michelin Bib Gourmand (2025).", "In the Michelin Guide (2025)." The year comes from the
-       source (leave it out if the source gives none). It's a fact about the place, not a source
-       marker or a rank. Never add it from memory; unsure → leave it out. Put the Michelin link in
-       `sources`.
+       this run puts the place in the Michelin Guide, the note **must end** with that fact as its
+       last sentence, in exactly one of these forms (translated like the rest):
+       "Michelin star (2026).", "Two Michelin stars (2026).", "Three Michelin stars (2026).",
+       "Michelin Bib Gourmand (2026).", "In the Michelin Guide (2026)." (Selected). The year is the
+       guide year from the source; leave it out only when the "Michelin check" in step 2 found
+       none. It goes in the note itself, not only in `details`: not at the start, not "Bib-rated"
+       or "Michelin-listed". It's a fact about the place, not a source marker or a rank. Never
+       add it from memory. Put the Michelin link in `sources`. Before writing the file, check
+       every place whose `details` or `sources` mention Michelin: its note must end with the
+       fact.
      - `details`: what the user reads on the review page. Why it's in, who recommends it, what to
        order, caveats (lines, prices, laptop rules, hours). Two to four sentences of plain text;
        `[text](url)` links are fine. Blank lines separate paragraphs.
