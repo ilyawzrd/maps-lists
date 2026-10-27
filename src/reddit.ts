@@ -212,6 +212,10 @@ async function main() {
         process.exitCode = 1;
         return;
       }
+      // rdt's login answers "Already authenticated" for any saved credential, even one Reddit now
+      // rejects (403), and rereads the browser only after 7 days. A rejected one is dropped first, so
+      // login takes fresh cookies; a working one is kept in case the Keychain prompt is denied.
+      if (!(await status(root)).loggedIn) spawnSync(bin, ["logout"], { stdio: ["ignore", 2, 2] });
       // rdt prints the account it found; keep that on stderr, the JSON line on stdout.
       spawnSync(bin, ["login"], { stdio: ["inherit", 2, 2] });
       await updateConfig(root, { reddit: undefined });

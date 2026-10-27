@@ -255,7 +255,12 @@ Every research pass covers these, per category:
      step 1c (snippets only), the bar is a positive mention in at least three different threads.
    - Each thread you rely on goes into `sources` as
      `{title: "r/<sub>: <thread title>", url: "https://www.reddit.com/r/<sub>/comments/<id>/"}`.
-   - If a command prints `"ok": false` (an expired login, `forbidden`, rate limited), stop
+   - If a **search** prints `"ok": false` (Reddit has refused search with `forbidden` while
+     reading threads still worked; Oct 2026), don't retry it: find the threads with web search
+     instead, 2–3 `site:reddit.com <city> <category>` searches per category with the same angles,
+     and pass the thread links from the results to `maps-lists reddit read <url> <url>…` (it takes
+     reddit.com links as well as ids). Then go on as above; no need to mention it.
+   - If a **read** prints `"ok": false` (an expired login, `forbidden`, rate limited), stop
      the Reddit pass, fall back to snippets (one quick search per category), and say in one line
      that the Reddit login needs renewing next time. Don't retry.
 2. **Filter.** For each candidate, note who recommends it and any pushback. The test is quality,

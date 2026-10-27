@@ -96,7 +96,10 @@ uses snippets).
 You need to be signed in to reddit.com in your browser. Claude reaches it only through
 `maps-lists reddit`, which can search and read and nothing else (rdt itself can also vote and
 comment). No (or no account) means snippets, and it doesn't ask again (`maps-lists reddit on` brings the
-question back). The login is stored in `~/.config/rdt-cli/`; `rdt logout` removes it.
+question back). The login is stored in `~/.config/rdt-cli/`; `rdt logout` removes it. When Reddit
+rejects that stored login, `maps-lists reddit login` drops it and takes a fresh one from the browser.
+When Reddit refuses search (it did in Oct 2026) but threads still open, research finds the threads
+with `site:reddit.com` web searches and reads those.
 Reddit's terms don't allow automated reading, and this uses your own login, so you use it at your own risk.
 
 ### Adding places you name
