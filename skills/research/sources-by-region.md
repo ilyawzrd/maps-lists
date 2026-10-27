@@ -24,6 +24,17 @@ A region not listed here uses the general sources only.
   Gourmand. Search in Thai.
 - **Singapore:** Burpple, Eatbook, Seth Lui, Michelin Bib Gourmand and its hawker picks.
 - **France:** Le Fooding, Gault&Millau, city dailies' food pages. Search in French.
+  - **Paris bakeries:** the contest results for the current and previous year: the Ville de
+    Paris Grand Prix de la meilleure baguette de tradition française («grand prix baguette
+    tradition <year> classement»), and the best-croissant contests («meilleur croissant au beurre
+    Paris <year>», «concours meilleur croissant Île-de-France <year>»). Their top 3 count as a
+    contest podium in step 2.
+  - **Paris, every category:** David Lebovitz ([davidlebovitz.com](https://www.davidlebovitz.com/)),
+    a pastry chef and food writer living in Paris since 2004: bakeries, pastry, chocolate, cafés,
+    bistros, markets. Search `site:davidlebovitz.com <category or place>` and fetch the post.
+    A post from the current or previous year counts as one strong local source (a local food
+    critic); an older one counts as one source, and the place still needs a current sign that
+    it's open and as good.
 - **Italy:** Gambero Rosso, Slow Food's *Osterie d'Italia* (strong for trattorie and osterie),
   Dissapore. Search in Italian.
 - **Spain:** Guía Repsol (Soles), El Comidista (El País), Michelin. Search in Spanish, and in

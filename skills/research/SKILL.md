@@ -215,6 +215,9 @@ Every research pass covers these, per category:
      Guide status as its own line (stars, Bib Gourmand or Selected, with the guide year and the
      guide.michelin.com or article link), or "none found". "Michelin-listed" without the
      distinction and year isn't a status.
+   - For categories with a recognised contest (bread, croissants, pastries, pizza…): the
+     current and previous year's results, 1st to 3rd place, each with the year and a link, and
+     every candidate's placing in them.
    - The criteria from step 2 below, so its report already flags what step 2 will drop.
 
    Tell it to write the report to `~/.maps-lists/reports/<title>.md` and its notes to
@@ -288,6 +291,15 @@ Every research pass covers these, per category:
      and neither is a contest or award ranking (a baguette or croissant contest, a "best of"
      list): it counts as one source, not a reason on its own. Several pages from the same outlet
      count once.
+   - **Contest podium** → keep, even on that source alone: 1st to 3rd place in a recognised,
+     juried contest for the category (Paris's Grand Prix de la baguette de tradition française,
+     the best-croissant contests; `sources-by-region.md` names others), in the current year's or
+     the previous year's edition. Read the placing from the results announcement or press
+     coverage of it, never from memory, and check the bakery still trades under the same name
+     (winners get sold). Say the placing and year in `details`; the note may carry it too (step
+     3). 4th place and below, older editions, and magazine "best of" lists stay one source.
+     Podium places don't count toward the ~25 per category: they go on top of it, never cut to
+     make room.
    - **New openings** follow the same bar: being new or having few reviews is never a reason to
      drop a place that meets it. Say the caveat in `details` ("Opened in 2026, few reviews yet").
    - **Thin evidence** → `excluded[]`, not dropped: everything below the bar, with reason
@@ -297,7 +309,7 @@ Every research pass covers these, per category:
      `unconfirmed: <what's unclear>`.
    - Aim for about 10–25 places per category. A tight list beats an exhaustive one: when more
      than about 25 pass the bar, keep the best-supported and move the rest to `excluded[]` as
-     `thin evidence: <why it's weaker>`.
+     `thin evidence: <why it's weaker>`. Contest podium places are added on top of the ~25.
    - **No silent drops.** Every candidate the research surfaced, above all the well-known ones,
      ends up in `places[]` or in `excluded[]` with its reason. Before step 3, check the city's
      famous names for the category against both lists, and add any that's missing.
@@ -336,8 +348,10 @@ Every research pass covers these, per category:
      - `note`: the text that goes to Maps. Use the **note style** of `maps-lists:import`: plain
        text, no name, city or address, only concrete info (what to order, when to go, book ahead,
        closing day), one or two sentences, no sources or ranks. A contest placing isn't a note
-       ("Baguette de tradition, 7th best in Paris 2026"): say what to get. Only a current-year
-       win or top 3 may be mentioned, after the practical part. Three fixed sentences are the
+       ("Baguette de tradition, 7th best in Paris 2026"): say what to get. Only a contest podium
+       from step 2 (1st to 3rd, current or previous year) may be mentioned, after the practical
+       part, with its year ("Get the tradition, still warm. 2nd, Grand Prix de la baguette
+       2026."). Three fixed sentences are the
        exception, facts about the place rather than source markers, each in the note itself, not
        only in `details`, translated like the rest:
        - **Classic** (step 2): the note **starts** with "Classic." (`Классика.`).

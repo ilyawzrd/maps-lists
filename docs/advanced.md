@@ -75,9 +75,10 @@ favourite." in its note, before any Michelin status. It's dropped as a **tourist
 serves (locals say overrated or "went downhill", touts, picture menus), as **viral** when the hype is
 one photogenic item, as **bad** when reviews or locals say the food is poor now, and when it's
 **closed**. Places need two independent sources or one strong local one; a contest ranking or a
-single listicle counts as one source. New openings follow the same bar, with the caveat in their
+single listicle counts as one source, except a podium: 1st to 3rd in a recognised contest
+(Paris's baguette and croissant contests) in this or last year's edition keeps a place on its own. New openings follow the same bar, with the caveat in their
 details. Places below it are filtered out as **thin evidence**, and each category aims for about
-10–25 places. "Hidden gems" without "only" or "also" gets one extra question: mix in the classics, or
+10–25 places, with contest podium places added on top. "Hidden gems" without "only" or "also" gets one extra question: mix in the classics, or
 only lesser-known places. Every candidate ends up either kept or in the filtered-out section with its reason, so
 you can tick any of them back in on the review page.
 
